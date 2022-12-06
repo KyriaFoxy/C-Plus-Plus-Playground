@@ -2,11 +2,13 @@
 //  main.cpp
 //  Playground
 //
-//  Created by Refr Asta on 06/12/2022.
+//  Created by Astryda Malinowska on 06/12/2022.
 //
 
 #include <cstdio>
 int step_function(int);
+int absolute_value(int);
+int sum(int, int);
 
 int main(int argc, const char * argv[])
 {
@@ -61,6 +63,22 @@ int main(int argc, const char * argv[])
     printf("Number 2: %d, Step: %d\n", num2, result2);
     printf("Number 3: %d, Step: %d\n", num3, result3);
     
+    /*
+     Own trials
+     */
+    //1.1 absolute value
+    int test_value1 = -10;
+    printf("The absolute value of: %d, is: %d\n", test_value1, absolute_value(test_value1));
+    int test_value2 = 12;
+    printf("The absolute value of: %d, is: %d\n", test_value2, absolute_value(test_value2));
+    int test_value3 = 0;
+    printf("The absolute value of: %d, is: %d\n", test_value3, absolute_value(test_value3));
+    
+    //1.4 sum function
+    int number1 = 100;
+    int number2 = 1243;
+    printf("The sum of numbers: %d and %d is: %d\n", number1, number2, sum(number1, number2));
+    
     
     return 0;
 }
@@ -77,5 +95,25 @@ int step_function(int num)
     {
         result = 1;
     }
+    return result;
+}
+
+int absolute_value(int num)
+{
+    int abs_value = 0;
+    if (num > 0)
+    {
+        abs_value = num;
+    }
+    else if (num < 0)
+    {
+        abs_value = num * -1;
+    }
+    return abs_value;
+}
+
+int sum(int number1, int number2)
+{
+    int result = number1 + number2;
     return result;
 }
