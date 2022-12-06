@@ -2,7 +2,7 @@
 //  main.cpp
 //  Playground
 //
-//  Created by Refr Asta on 06/12/2022.
+//  Created by Astryda Malinowska on 06/12/2022.
 //
 
 #include <iostream>
