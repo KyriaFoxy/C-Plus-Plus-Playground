@@ -46,10 +46,26 @@ int main(int argc, const char * argv[])
     int value3 = step_function(0);
     printf("%d\n", value3);
     
+    //1.8 another approach to step function
+    puts("Ok, another trial for step function:");
+    int num1 = 42;
+    int result1 = step_function(num1);
+    
+    int num2 = 0;
+    int result2 = step_function(num2);
+    
+    int num3 = -32767;
+    int result3 = step_function(num3);
+    
+    printf("Number 1: %d, Step: %d\n", num1, result1);
+    printf("Number 2: %d, Step: %d\n", num2, result2);
+    printf("Number 3: %d, Step: %d\n", num3, result3);
+    
     
     return 0;
 }
 
+//Function for check if number is positive or negative
 int step_function(int num)
 {
     int result = 0;
