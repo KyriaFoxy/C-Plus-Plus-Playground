@@ -5,10 +5,14 @@
 //  Created by Refr Asta on 06/12/2022.
 //
 
-#include <iostream>
+#include <cstdio>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main(int argc, const char * argv[])
+{
+    //1.1
+    printf("Hello world of C++!\n");
+    puts("This is my playground");
+    
+    
     return 0;
 }
