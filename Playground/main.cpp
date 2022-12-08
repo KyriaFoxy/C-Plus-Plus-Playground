@@ -7,6 +7,34 @@
 
 #include <cstdio>
 #include <cstddef>
+//enum class for 2.15
+enum class Race
+{
+    Astryda,
+    Astrydzia,
+    Asta,
+    Gazelka,
+    Gazelq,
+    Gaxelek,
+    Gazelinku
+};
+//struct for 2.16
+struct Book
+{
+    char name[256];
+    int year;
+    int pages;
+    bool hardcover;
+};
+//union for 2.18
+union Variant
+{
+    char string[10];
+    int integer;
+    double floating_point;
+};
+
+
 
 int main(int argc, const char * argv[])
 {
@@ -103,7 +131,154 @@ int main(int argc, const char * argv[])
      long long: 8
      */
     
-    //2.9
+    //2.9 arrays
+    int arr[] = { 1, 2, 3, 4, 5 };
+    printf("The third element is: %d\n", arr[2]);
+    /*
+     The third element is: 3
+     */
+    arr[2] = 100;
+    printf("The third element is: %d\n", arr[2]);
+    /*
+     The third element is: 100
+     */
+    
+    //2.10 for loop on arrays
+    unsigned long maximum = 0;
+    unsigned long values[] = { 10, 50, 20, 40, 0 };
+    for (size_t i = 0; i < 5; i ++)
+    {
+        if (values[i] > maximum)
+        {
+            maximum = values[i];
+        }
+    }
+    printf("The maximum value is %lu\n", maximum);
+    /*
+     The maximum value is 50
+     */
+    
+    //2.11 for loop depend on range
+    unsigned long maximum2 = 0;
+    unsigned long values2[] = { 20, 60, 30, 50, 0 };
+    for (unsigned long value : values2)
+    {
+        if (value > maximum2)
+        {
+            maximum2 = value;
+        }
+    }
+    printf("The maximum value2 is %lu\n", maximum2);
+    /*
+     The maximum value2 is 60
+     */
+    
+    //bonus 1
+    short array[] = { 104, 105, 31, 98, 105, 108, 108, 0 };
+    size_t n_elements = sizeof(array) / sizeof(short);
+    printf("Number of elements in table is: %zu\n", n_elements);
+    /*
+     Number of elements in table is: 8
+     */
+    
+    //bonus 2
+    char house[] = "a house of gold.";
+    printf("A book holds %s\n", house);
+    
+    //bonus 3
+    char house2[] = "a "
+    "house "
+    "of " "gold.";
+    printf("A book holds %s\n", house2);
+    
+    //2.12 ascii code for printing alphaber letters
+    char alphabet[27];
+    for (int i = 0; i < 26; i++)
+    {
+        alphabet[i] = i + 97;
+    }
+    alphabet[26] = 0;
+    printf("%s\n", alphabet);
+    /*
+     abcdefghijklmnopqrstuvwxyz
+     */
+    for (int i = 0; i < 26; i++)
+    {
+        alphabet[i] = i + 65;
+    }
+    printf("%s\n", alphabet);
+    /*
+     ABCDEFGHIJKLMNOPQRSTUVWXYZ
+     */
+    
+    //2.15 enumerate with switch case
+    Race race = Race::Gazelka;
+    switch (race)
+    {
+        case Race::Astryda:
+        {
+            puts("You work hard!");
+        }
+        break;
+        case Race::Astrydzia:
+        {
+            puts("You are very strong!");
+        }
+        break;
+        case Race::Asta:
+        {
+            puts("You are a great leader");
+        }
+        break;
+        case Race::Gazelka:
+        {
+            puts("My, how versatile you are!");
+        }
+        break;
+        case Race::Gazelq:
+        {
+            puts("You're incredibly helpful!");
+        }
+        break;
+        case Race::Gaxelek:
+        {
+            puts("Anything you want!");
+        }
+        break;
+        case Race::Gazelinku:
+        {
+            puts("What an enigma");
+        }
+        break;
+        default:
+        {
+            puts("Error! Uknown race!");
+        }
+    }
+    /*
+     My, how versatile you are!
+     */
+    
+    //2.16 - struct
+    Book neuromancer;
+    neuromancer.pages = 271;
+    printf("Neuromancer has %d pages.\n", neuromancer.pages);
+    /*
+     Neuromancer has 271 pages.
+     */
+    
+    //2.18 - how to not use unions
+    Variant v;
+    v.integer = 42;
+    printf("The ultimate answer is: %d\n", v.integer);
+    v.floating_point = 2.7182818284;
+    printf("Euler's number e:       %f\n", v.floating_point);
+    printf("A dumpster fire:        %d\n", v.integer);
+    /*
+     The ultimate answer is: 42
+     Euler's number e:       2.718282
+     A dumpster fire:        -1961734133
+     */
     
     
     return 0;
