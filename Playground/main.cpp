@@ -172,26 +172,43 @@ enum class Operation
 // };
 
 //class for p2.3
-class Calculator
+struct Calculator
 {
-    public:
-        Calculator()
-        {
-            printf("This should not be called,\n");
-        }
-    
-        Calculator(Operation operation);
-        
-        int calculate(int a, int b);
+    explicit Calculator(Operation op_in)
+    {
+        op = op_in;
+    }
 
-        Operation get_operation()
+    int calculate(int a, int b)
+    {
+        int result = 0;
+        switch (op)
         {
-            return m_operation;
+            case Operation::Add:
+            {
+                result = a + b;
+                break;
+            }
+            case Operation::Substract:
+            {
+                result = a - b;
+                break;
+            }
+            case Operation::Multiply:
+            {
+                result = a * b;
+                break;
+            }
+            case Operation::Divide:
+            {
+                result = a / b;
+                break;
+            }
         }
-
+        return result;
+    }
     private:
-        Operation m_operation;
-
+        Operation op;
 };
 
 
@@ -499,7 +516,16 @@ int main(int argc, const char * argv[])
     */
 
    //Practice
-   //P2.1
+   //P2.3
+   auto calc_add = Calculator(Operation::Add);
+   printf("15 + 10 = %d.\n", calc_add.calculate(15, 10));
+
+   auto calc_div = Calculator(Operation::Divide);
+   printf("50 / 5 = %d.\n", calc_div.calculate(50, 5));
+   /*
+   15 + 10 = 25.
+   50 / 5 = 10.
+   */
    
 
     return 0;
