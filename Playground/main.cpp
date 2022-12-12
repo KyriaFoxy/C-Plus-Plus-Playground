@@ -34,6 +34,146 @@ union Variant
     double floating_point;
 };
 
+//struct for 2.19
+struct ClockOfTheLongNow
+{
+    void add_year()
+    {
+        year++;
+    }
+    int year;
+};
+
+//class for 2.21
+struct ClockOfTheLongNow2
+{
+    void add_year()
+    {
+        year++;
+    }
+    bool set_year(int new_year)
+    {
+        if (new_year < 2019)
+        {
+            return false;
+        }
+        year = new_year;
+        return true;
+    }
+    int get_year()
+    {
+        return year;
+    }
+    private:
+        int year;
+};
+
+//struct for 2.22
+struct ClockOfTheLongNow3
+{
+    ClockOfTheLongNow3()
+    {
+        year = 2019;
+    }
+    void add_year()
+    {
+        year++;
+    }
+    bool set_year(int new_year)
+    {
+        if (new_year < 2019)
+        {
+            return false;
+        }
+        year = new_year;
+        return true;
+    }
+    int get_year()
+    {
+        return year;
+    }
+    private:
+        int year;
+};
+
+//struct for 2.23
+struct ClockOfTheLongNow4
+{
+    ClockOfTheLongNow4(int year_in)
+    {
+        if(!set_year(year_in))
+        {
+            year = 2019;
+        }
+    }
+    ClockOfTheLongNow4()
+    {
+        year = 2019;
+    }
+    void add_year()
+    {
+        year++;
+    }
+    bool set_year(int new_year)
+    {
+        if (new_year < 2019)
+        {
+            return false;
+        }
+        year = new_year;
+        return true;
+    }
+    int get_year()
+    {
+        return year;
+    }
+    private:
+        int year;
+};
+
+//struct for 2.27
+struct Taxonomist
+{
+    Taxonomist()
+    {
+        printf("(No arguments.)\n");
+    }
+    Taxonomist(char x)
+    {
+        printf("Char: %c.\n", x);
+    }
+    Taxonomist(int x)
+    {
+        printf("Integer: %d.\n", x);
+    }
+    Taxonomist(float x)
+    {
+        printf("Float: %f.\n", x);
+    }
+};
+
+//enum class for P2.1
+enum class Operation
+{
+    Add,
+    Substract,
+    Multiply,
+    Divide
+};
+
+//struct for P2.2
+struct Calculator
+{
+    Calculator(Operation);
+
+    int calculate(int a, int b)
+    {
+        if(Operation == Operation::Add)
+        {
+
+        }
+    }
+};
 
 
 int main(int argc, const char * argv[])
@@ -279,7 +419,77 @@ int main(int argc, const char * argv[])
      Euler's number e:       2.718282
      A dumpster fire:        -1961734133
      */
-    
-    
+
+    //Class programming
+    //2.19 - struct with method
+    ClockOfTheLongNow clock;
+    clock.year = 2020;
+    clock.add_year();
+    printf("Year: %d.\n", clock.year);
+    clock.add_year();
+    printf("Now year: %d.\n", clock.year);
+    /*
+      Year: 2021.
+      Now year: 2022.
+    */
+
+
+    //2.21 protected struct
+    ClockOfTheLongNow2 clock2;
+    if(!clock2.set_year(2018))
+    {
+        clock2.set_year(2019);
+    }
+    clock2.add_year();
+    printf("Year: %d.\n", clock2.get_year());
+    /*
+    Year: 2020.
+    */
+
+    //2.22 struct with costructor
+    ClockOfTheLongNow3 clock3;
+    printf("Year is equal: %d.\n", clock3.get_year());
+    /*
+    Year is equal: 2019.
+    */
+
+   //2.23 struct with constructor overloaded
+   ClockOfTheLongNow4 clock4{ 2020 };
+   printf("Now, year: %d.\n", clock4.get_year());
+   /*
+   Now, year: 2020.
+   */
+
+    //2.27 another struct.
+    Taxonomist t1;
+    Taxonomist t2{ 'c' };
+    Taxonomist t3{ 65537 };
+    Taxonomist t4{ 6.02e23f };
+    Taxonomist t5{ 'g' };
+    Taxonomist t6 = { '1' };
+    Taxonomist t7{};
+    // Taxonomist t8();
+    /*
+    (No arguments.)
+    Char: c.
+    Integer: 65537.
+    Float: 602000017271895229464576.000000.
+    Char: g.
+    Char: 1.
+    (No arguments.)
+    */
+
+   //Practice
+   //P2.1
+   Operation operation = Operation::Add;
+    switch (operation)
+    {
+        case Operation::Add:
+        {
+            printf("Add: %d", );
+        }
+        break;
+    }
+
     return 0;
 }
