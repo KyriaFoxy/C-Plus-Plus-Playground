@@ -161,18 +161,37 @@ enum class Operation
     Divide
 };
 
-//struct for P2.2
-struct Calculator
+//class for P2.2
+// class Calculator
+// {
+//     public:
+//         Calculator(Operation operation);
+
+//     private:
+//         Operation m_operation;
+// };
+
+//class for p2.3
+class Calculator
 {
-    Calculator(Operation);
-
-    int calculate(int a, int b)
-    {
-        if(Operation == Operation::Add)
+    public:
+        Calculator()
         {
-
+            printf("This should not be called,\n");
         }
-    }
+    
+        Calculator(Operation operation);
+        
+        int calculate(int a, int b);
+
+        Operation get_operation()
+        {
+            return m_operation;
+        }
+
+    private:
+        Operation m_operation;
+
 };
 
 
@@ -481,15 +500,7 @@ int main(int argc, const char * argv[])
 
    //Practice
    //P2.1
-   Operation operation = Operation::Add;
-    switch (operation)
-    {
-        case Operation::Add:
-        {
-            printf("Add: %d", );
-        }
-        break;
-    }
+   
 
     return 0;
 }
