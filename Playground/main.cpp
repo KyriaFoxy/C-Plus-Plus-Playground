@@ -64,8 +64,8 @@ struct ClockOfTheLongNow2
     {
         return year;
     }
-    private:
-        int year;
+private:
+    int year;
 };
 
 //struct for 2.22
@@ -92,8 +92,8 @@ struct ClockOfTheLongNow3
     {
         return year;
     }
-    private:
-        int year;
+private:
+    int year;
 };
 
 //struct for 2.23
@@ -127,8 +127,8 @@ struct ClockOfTheLongNow4
     {
         return year;
     }
-    private:
-        int year;
+private:
+    int year;
 };
 
 //struct for 2.27
@@ -178,7 +178,7 @@ struct Calculator
     {
         op = op_in;
     }
-
+    
     int calculate(int a, int b)
     {
         int result = 0;
@@ -207,8 +207,8 @@ struct Calculator
         }
         return result;
     }
-    private:
-        Operation op;
+private:
+    Operation op;
 };
 
 
@@ -239,8 +239,8 @@ int main(int argc, const char * argv[])
     printf("Hogwarts' Platform: %e %f %g\n", hp, hp, hp);
     
     //intermezzo
-//    wchar_t beer = U'\U0001F37A';
-//    printf("%lc\n", beer);
+    //    wchar_t beer = U'\U0001F37A';
+    //    printf("%lc\n", beer);
     
     //2.4
     char x = 'M';
@@ -264,10 +264,10 @@ int main(int argc, const char * argv[])
     printf("20 <= 20: %d\n", 20 <= 20);
     /* 7 ==  7: 1
      7 !=  7: 0
-    10 >  20: 0
-    10 >= 20: 0
-    10 <  20: 1
-    20 <= 20: 1
+     10 >  20: 0
+     10 >= 20: 0
+     10 <  20: 1
+     20 <= 20: 1
      */
     
     
@@ -395,37 +395,37 @@ int main(int argc, const char * argv[])
         {
             puts("You work hard!");
         }
-        break;
+            break;
         case Race::Astrydzia:
         {
             puts("You are very strong!");
         }
-        break;
+            break;
         case Race::Asta:
         {
             puts("You are a great leader");
         }
-        break;
+            break;
         case Race::Gazelka:
         {
             puts("My, how versatile you are!");
         }
-        break;
+            break;
         case Race::Gazelq:
         {
             puts("You're incredibly helpful!");
         }
-        break;
+            break;
         case Race::Gaxelek:
         {
             puts("Anything you want!");
         }
-        break;
+            break;
         case Race::Gazelinku:
         {
             puts("What an enigma");
         }
-        break;
+            break;
         default:
         {
             puts("Error! Uknown race!");
@@ -455,7 +455,7 @@ int main(int argc, const char * argv[])
      Euler's number e:       2.718282
      A dumpster fire:        -1961734133
      */
-
+    
     //Class programming
     //2.19 - struct with method
     ClockOfTheLongNow clock;
@@ -465,11 +465,11 @@ int main(int argc, const char * argv[])
     clock.add_year();
     printf("Now year: %d.\n", clock.year);
     /*
-      Year: 2021.
-      Now year: 2022.
-    */
-
-
+     Year: 2021.
+     Now year: 2022.
+     */
+    
+    
     //2.21 protected struct
     ClockOfTheLongNow2 clock2;
     if(!clock2.set_year(2018))
@@ -479,23 +479,23 @@ int main(int argc, const char * argv[])
     clock2.add_year();
     printf("Year: %d.\n", clock2.get_year());
     /*
-    Year: 2020.
-    */
-
+     Year: 2020.
+     */
+    
     //2.22 struct with costructor
     ClockOfTheLongNow3 clock3;
     printf("Year is equal: %d.\n", clock3.get_year());
     /*
-    Year is equal: 2019.
-    */
-
-   //2.23 struct with constructor overloaded
-   ClockOfTheLongNow4 clock4{ 2020 };
-   printf("Now, year: %d.\n", clock4.get_year());
-   /*
-   Now, year: 2020.
-   */
-
+     Year is equal: 2019.
+     */
+    
+    //2.23 struct with constructor overloaded
+    ClockOfTheLongNow4 clock4{ 2020 };
+    printf("Now, year: %d.\n", clock4.get_year());
+    /*
+     Now, year: 2020.
+     */
+    
     //2.27 another struct.
     Taxonomist t1;
     Taxonomist t2{ 'c' };
@@ -506,28 +506,28 @@ int main(int argc, const char * argv[])
     Taxonomist t7{};
     // Taxonomist t8();
     /*
-    (No arguments.)
-    Char: c.
-    Integer: 65537.
-    Float: 602000017271895229464576.000000.
-    Char: g.
-    Char: 1.
-    (No arguments.)
-    */
-
-   //Practice
-   //P2.3
-   auto calc_add = Calculator(Operation::Add);
-   printf("15 + 10 = %d.\n", calc_add.calculate(15, 10));
-
-   auto calc_div = Calculator(Operation::Divide);
-   printf("50 / 5 = %d.\n", calc_div.calculate(50, 5));
-   /*
-   15 + 10 = 25.
-   50 / 5 = 10.
-   */
-   
-   //All done, no errors
-
+     (No arguments.)
+     Char: c.
+     Integer: 65537.
+     Float: 602000017271895229464576.000000.
+     Char: g.
+     Char: 1.
+     (No arguments.)
+     */
+    
+    //Practice
+    //P2.3
+    auto calc_add = Calculator(Operation::Add);
+    printf("15 + 10 = %d.\n", calc_add.calculate(15, 10));
+    
+    auto calc_div = Calculator(Operation::Divide);
+    printf("50 / 5 = %d.\n", calc_div.calculate(50, 5));
+    /*
+     15 + 10 = 25.
+     50 / 5 = 10.
+     */
+    
+    //All done, no errors
+    
     return 0;
 }
