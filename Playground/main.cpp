@@ -27,7 +27,7 @@ struct ClockOfTheLongNow
         year = new_year;
         return true;
     }
-    int get_year()
+    int get_year() const
     {
         return year;
     }
@@ -60,6 +60,72 @@ void print_names(College2* colleges, size_t n_colleges)
     }
 }
 
+//void function for 3.8
+void add_year(ClockOfTheLongNow& clock)
+{
+    clock.set_year(clock.get_year() + 1);
+}
+
+//struct for 3.10
+struct Element
+{
+    Element* next{};
+    void insert_after(Element* new_element)
+    {
+        new_element -> next = next;
+        next = new_element;
+    }
+    char prefix[2];
+    short operating_number;
+};
+
+//struct for 3.18
+struct ClockOfTheLongNowx
+{
+    ClockOfTheLongNowx(int year_in)
+    {
+        if(!set_year(year_in))
+        {
+            year = 2019;
+        }
+    }
+    ClockOfTheLongNowx()
+    {
+        year = 2019;
+    }
+    void add_year() {
+        year++;
+    }
+    bool set_year(int new_year)
+    {
+        if(new_year < 2019)
+            return false;
+        year = new_year;
+        return true;
+    }
+    int get_year() const
+    {
+        return year;
+    }
+    
+private:
+    int year;
+};
+
+struct Avout
+{
+    Avout(const char* name, int year_of_apert)
+    : name { name }, apert { year_of_apert }
+    {
+        
+    }
+    void announce() const
+    {
+        printf("My name is %s and my next apert is %d.\n", name, apert.get_year());
+    }
+    const char* name;
+    ClockOfTheLongNowx apert;
+};
 
 
 int main(int argc, const char * argv[]) {
@@ -158,8 +224,71 @@ int main(int argc, const char * argv[]) {
      upper2: ABCDE.
      */
     
+    //3.8 using reference
+    
+    ClockOfTheLongNow clock1;
+    printf("The year is: %d.\n", clock1.get_year());
+    add_year(clock1);
+    printf("Now the year is: %d.\n", clock1.get_year());
+    /*
+     The year is: 2019.
+     Now the year is: 2020.
+     */
+    
+    //3.10 linked array
+    Element trooper1, trooper2, trooper3;
+    trooper1.prefix[0] = 'A';
+    trooper1.prefix[1] = 'M';
+    trooper1.operating_number = 421;
+    trooper1.insert_after(&trooper2);
+    trooper2.prefix[0] = 'I';
+    trooper2.prefix[1] = 'G';
+    trooper2.operating_number = 2187;
+    trooper2.insert_after(&trooper3);
+    trooper3.prefix[0] = 'K';
+    trooper3.prefix[1] = 'F';
+    trooper3.operating_number = 0005;
+    
+    for (Element *cursor = &trooper1; cursor; cursor = cursor -> next)
+    {
+        printf("Stormtrooper %c%c-%d.\n", cursor -> prefix[0], cursor -> prefix[1], cursor -> operating_number);
+    }
+    
+    /*
+     Stormtrooper AM-421.
+     Stormtrooper IG-2187.
+     Stormtrooper KF-5.
+     */
     
     
+    //3.11 references can't be reassigned
+    int original = 100;
+    int& original_ref = original;
+    printf("Original: %d\n", original);
+    printf("Reference: %d\n", original_ref);
+    
+    int new_value = 200;
+    original_ref = new_value;
+    printf("Original: %d\n", original);
+    printf("New value: %d\n", new_value);
+    printf("Reference: %d\n", original_ref);
+    /*
+     Original: 100
+     Reference: 100
+     Original: 200
+     New value: 200
+     Reference: 200
+     */
+    
+    //3.18
+    Avout ast { "Astryda", 3010 };
+    Avout gaz { "Gazela", 4000};
+    ast.announce();
+    gaz.announce();
+    /*
+     My name is Astryda and my next apert is 3010.
+     My name is Gazela and my next apert is 4000.
+     */
     
     return 0;
 }
